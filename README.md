@@ -1,4 +1,4 @@
-Claro! Aqui está o README ajustado para a estrutura do seu projeto:
+
 
 ---
 
@@ -34,7 +34,7 @@ Este repositório contém o material do curso sobre **Pandas**, onde explorei as
     ├── Desafios                         # Pasta com desafios do curso
     │   ├── alunos_aprovados.csv         # Dataset para o desafio
     │   └── desafio_01.ipynb             # Notebook com resolução do desafio
-    ├── estudo                           # Estudos iniciais e testes
+    ├── estudo                           # Aplicação prática dos conceitos estudados
     │   ├── estudo01.ipynb               # Notebook com estudos gerais
     │   └── learning_matematica.csv      # Dataset sobre matemática
     ├── filtro01.csv                     # Dados filtrados
@@ -45,6 +45,9 @@ Este repositório contém o material do curso sobre **Pandas**, onde explorei as
     └── projeto_imobiliaria.ipynb        # Projeto final aplicado ao mercado imobiliário
 ```
 
+### 🗂️ Detalhes sobre o diretório `estudo`  
+O diretório **estudo** contém notebooks e datasets utilizados como uma aplicação prática dos conceitos explorados ao longo do curso. Aqui você encontrará exemplos reais de manipulação de dados e visualizações gráficas, com foco em temas diversos como matemática e análise de dados imobiliários.
+
 ---
 
 ## 🖼️ Exemplos Visuais  
@@ -53,16 +56,27 @@ Este repositório contém o material do curso sobre **Pandas**, onde explorei as
 ```python
 import pandas as pd
 
-# Carregando o dataset de apartamentos
-df = pd.read_csv('dados_apartamento.csv')
-
-# Exibindo os dados filtrados por preço
-df_filtrado = df[df['preco'] > 5000]
-print(df_filtrado)
+# Adicionando uma nova coluna baseada em uma lógica
+dados['Possui_suite(s)'] = dados['Suites'].apply(lambda x: 'Sim' if x > 0 else 'Nao')
+dados.head()
 ```
 
-### 📈 Visualização Gráfica  
-![](assets/grafico_projeto.png)  
+### 📊 Visualização de Dados  
+```python
+# Criando um gráfico de barras com a distribuição percentual de tipos de imóveis
+df_residenciais_tipo_percentual = df_residenciais.Tipo.value_counts(normalize=True).to_frame()
+df_residenciais_tipo_percentual.columns = ['proportion']
+
+df_residenciais_tipo_percentual.sort_values('proportion').plot(
+    kind='bar', 
+    figsize=(14, 10), 
+    color='green', 
+    xlabel='Tipos', 
+    ylabel='Percentual'
+)
+```
+
+![](assets/grafico_projeto.png)
 
 ---
 
